@@ -8,7 +8,7 @@ luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
 [![若部分图片无法正常显示，请挂上机场浏览或点这里到末尾看修复教程](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)](#解决-github-网页上图片显示失败的问题) [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 
-[luci-app-partexp  ddns-go动态域名插件](https://github.com/sirpdboy/luci-app-partexp)
+[luci-app-partexp](https://github.com/sirpdboy/luci-app-partexp)
 ======================
 
 
@@ -16,7 +16,7 @@ luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
 ## 功能说明：
 
-### luci-app-partexp动态域名插件
+### luci-app-partexp
 #### 自动获格式化分区扩容，自动挂载插件
 
 <!-- TOC -->
