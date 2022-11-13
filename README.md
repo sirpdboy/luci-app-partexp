@@ -21,7 +21,7 @@ luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
 <!-- TOC -->
 
-- [ddns-go](#ddns-go)
+- [partexp](#luci-app-partexp)
   - [特性](#特性)
   - [使用方法](#使用方法)
   - [说明](#说明)
