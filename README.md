@@ -2,13 +2,13 @@
 
 欢迎来到sirpdboy的源码仓库！
 =
-# luci-app-ddns-go
+# luci-app-partexp
 
-luci-app-ddns-go 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对应的域名服务。支持的域名服务商 Alidns(阿里云) Dnspod(腾讯云) Cloudflare 华为云 Callback 百度云 porkbun GoDaddy
+luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
 [![若部分图片无法正常显示，请挂上机场浏览或点这里到末尾看修复教程](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)](#解决-github-网页上图片显示失败的问题) [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 
-[luci-app-ddns-go  ddns-go动态域名插件](https://github.com/sirpdboy/luci-app-ddns-go)
+[luci-app-partexp  ddns-go动态域名插件](https://github.com/sirpdboy/luci-app-partexp)
 ======================
 
 
@@ -16,8 +16,8 @@ luci-app-ddns-go 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对
 
 ## 功能说明：
 
-### ddns-go动态域名插件
-#### 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对应的域名服务。
+### luci-app-partexp动态域名插件
+#### 自动获格式化分区扩容，自动挂载插件
 
 <!-- TOC -->
 
@@ -31,23 +31,11 @@ luci-app-ddns-go 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对
 <!-- /TOC -->
 
 ## 特性
-
-- 支持Mac、Windows、Linux系统，支持ARM、x86架构
-- 支持的域名服务商 `Alidns(阿里云)` `Dnspod(腾讯云)` `Cloudflare` `华为云` `Callback` `百度云` `porkbun` `GoDaddy`
-- 支持接口/网卡获取IP
-- 支持以服务的方式运行
-- 默认间隔5分钟同步一次
-- 支持多个域名同时解析，公司必备
-- 支持多级域名
-- 网页中配置，简单又方便，可设置 `登录用户名和密码` / `禁止从公网访问`
-- 网页中方便快速查看最近50条日志，不需要跑docker中查看
-- 支持webhook通知
-- 支持TTL
-- 支持部分dns服务商传递自定义参数，实现地域解析等功能
+ luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
 ## 使用方法
 
-- 将luci-app-ddns-go添加至 LEDE/OpenWRT 源码的方法。
+- 将luci-app-partexp添加至 LEDE/OpenWRT 源码的方法。
 
 ### 下载源码方法一：
 - 编辑源码文件夹根目录feeds.conf.default并加入如下内容:
@@ -56,14 +44,14 @@ luci-app-ddns-go 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对
 
     # feeds获取源码：
 	
-    src-git luci-app-ddns-go https://github.com/sirpdboy/luci-app-ddns-go
+    src-git luci-app-partexp https://github.com/sirpdboy/luci-app-partexp
  ``` 
   ```Brach
   
    # 更新feeds，并安装主题：
    
-    scripts/feeds update luci-app-ddns-go
-	scripts/feeds install luci-app-ddns-go
+    scripts/feeds update luci-app-partexp
+	scripts/feeds install luci-app-partexp
  ``` 	
 
 ### 下载源码方法二：
@@ -72,7 +60,7 @@ luci-app-ddns-go 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对
  
     # 下载源码
 	
-    git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
+    git clone https://github.com/sirpdboy/luci-app-partexp.git package/luci-app-partexp
     make menuconfig
 	
  ``` 
@@ -80,19 +68,19 @@ luci-app-ddns-go 自动获得你的公网 IPv4 或 IPv6 地址，并解析到对
 
  ```Brach
     make menuconfig
-	# 找到 LuCI -> Applications, 选择 luci-app-ddns-go, 保存后退出。
+	# 找到 LuCI -> Applications, 选择 luci-app-partexp, 保存后退出。
  ``` 
  
 ### 编译
 
  ```Brach 
     # 编译固件
-    make package/ddns-go/luci-app-ddns-go/compile V=s
+    make package/luci-app-partexp/compile V=s
  ```
 
 ## 说明
 
--源码来源：https://github.com/sirpdboy/luci-app-ddns-go
+-源码来源：https://github.com/sirpdboy/luci-app-partexp
 -你可以随意使用其中的源码，但请注明出处。
 ============================
 
