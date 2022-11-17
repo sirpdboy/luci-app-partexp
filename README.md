@@ -1,11 +1,11 @@
 ### 访问数：[![](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)] [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 
-欢迎来到sirpdboy的源码仓库！
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明1.jpg)
+
 =
 # luci-app-partexp
 
-luci-app-partexp 自动获格式化分区扩容，自动挂载插件
-
+luci-app-partexp 一键自动格式化分区、扩容、自动挂载插件
 [![若部分图片无法正常显示，请挂上机场浏览或点这里到末尾看修复教程](https://visitor-badge.glitch.me/badge?page_id=sirpdboy-visitor-badge)](#解决-github-网页上图片显示失败的问题) [![](https://img.shields.io/badge/TG群-点击加入-FFFFFF.svg)](https://t.me/joinchat/AAAAAEpRF88NfOK5vBXGBQ)
 
 [luci-app-partexp](https://github.com/sirpdboy/luci-app-partexp)
@@ -16,8 +16,8 @@ luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
 ## 功能说明：
 
-### luci-app-partexp
-#### 自动获格式化分区扩容，自动挂载插件
+
+#### 一键自动格式化分区、扩容、自动挂载插件，专为OPENWRT设计，简化OPENWRT在分区挂载上烦锁的操作。本插件是sirpdboy耗费大量精力制作测试，请勿删除制作者信息！！
 
 <!-- TOC -->
 
@@ -80,13 +80,11 @@ luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
 ## 说明
 
--源码来源：https://github.com/sirpdboy/luci-app-partexp
--你可以随意使用其中的源码，但请注明出处。
-============================
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明2.jpg)
 
 ## 界面
 
-![screenshots](https://raw.githubusercontent.com/jeessy2/ddns-go/master/ddns-web.png)
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/partexp.jpg)
 
 
 # My other project
@@ -107,11 +105,11 @@ btmob 主题: https://github.com/sirpdboy/luci-theme-btmob
 
 ddns-go动态域名: https://github.com/sirpdboy/luci-app-ddns-go
 
+lucky大吉: https://github.com/sirpdboy/luci-app-lucky
 
 ## 捐助
 
--如果你觉得此项目对你有帮助，请捐助我们，以使项目能持续发展，更加完善。··请作者喝杯咖啡~~~**
--你们的支持就是我的动力！**
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/说明3.jpg)
 
 |     <img src="https://img.shields.io/badge/-支付宝-F5F5F5.svg" href="#赞助支持本项目-" height="25" alt="图飞了😂"/>  |  <img src="https://img.shields.io/badge/-微信-F5F5F5.svg" height="25" alt="图飞了😂" href="#赞助支持本项目-"/>  | 
 | :-----------------: | :-------------: |
@@ -120,4 +118,3 @@ ddns-go动态域名: https://github.com/sirpdboy/luci-app-ddns-go
 <a href="#readme">
     <img src="https://img.shields.io/badge/-返回顶部-orange.svg" alt="图飞了😂" title="返回顶部" align="right"/>
 </a>
-
