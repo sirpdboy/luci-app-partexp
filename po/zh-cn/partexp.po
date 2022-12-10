@@ -49,7 +49,7 @@ msgid "After operation, restart the machine, please wait..."
 msgstr "操作完毕，机器重启，请稍候..."
 
 msgid "Execution error. Please delete the partition or share and try again."
-msgstr "执行错误，请删除分区或者共享再重试。
+msgstr "执行错误，请删除分区或者共享再重试。"
 "
 
 
