@@ -7,14 +7,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-partexp
-PKG_VERSION:=0.1.8
+PKG_VERSION:=0.1.9
 PKG_RELEASE:=20221201
 
 PKG_LICENSE:=Apache-2.0
 PKG_MAINTAINER:=Sirpdboy <herboy2008@gmail.com>
 
 LUCI_TITLE:=LuCI Support for Automatic Partition Mount
-LUCI_DEPENDS:=+fdisk +block-mount +parted +losetup +resize2fs +f2fsck +f2fs-tools
+LUCI_DEPENDS:=+fdisk +block-mount
 LUCI_PKGARCH:=all
 
 
