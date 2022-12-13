@@ -1,5 +1,7 @@
-require("luci.tools.webadmin")
-
+--[[
+LuCI - Lua Configuration Interface
+ Copyright (C) 2022  sirpdboy <herboy2008@gmail.com> https://github.com/sirpdboy/luci-app-partexp
+]]--
 local fs   = require "nixio.fs"
 local util = require "nixio.util"
 local tp   = require "luci.template.parser"
@@ -29,18 +31,18 @@ local uci=luci.model.uci.cursor()
 end
 
 local m,t,e
-m = Map("partexp", "<font color='green'>" .. translate("Partition expansion") .."</font>",
-translate( "Automatically format the target device partition. If there are multiple partitions, it is recommended to manually delete all partitions before using this tool.<br/>For specific usage, see:") ..translate("<a href=\'https://github.com/sirpdboy/luci-app-partexp.git' target=\'_blank\'>GitHub</a>") )
+m = Map("partexp", "<font color='green'>" .. translate("One click partition expansion mounting tool") .."</font>",
+translate( "Automatically format and mount the target device partition. If there are multiple partitions, it is recommended to manually delete all partitions before using this tool.<br/>For specific usage, see:") ..translate("<a href=\'https://github.com/sirpdboy/luci-app-partexp.git' target=\'_blank\'>GitHub @sirpdboy</a>") )
 
 t=m:section(TypedSection,"global")
 t.anonymous=true
 
 e=t:option(ListValue,"target_function", translate("Select function"),translate("Select the function to be performed"))
 e:value("/overlay", translate("Expand application space overlay (/overlay)"))
-e:value("/", translate("Use as root filesystem (/)"))
+-- e:value("/", translate("Use as root filesystem (/)"))
 e:value("/opt", translate("Used as Docker data disk (/opt)"))
+e:value("/dev", translate("Normal mount and use by device name(/dev/x1)"))
 
--- local disks = dm.list_disks()
 e=t:option(ListValue,"target_disk", translate("Destination hard disk"),translate("Select the hard disk device to operate"))
 for i, d in ipairs(devices) do
 	if d.name and d.size then
@@ -52,17 +54,30 @@ end
 
 o=t:option(Flag,"keep_config",translate("Keep configuration"))
 o:depends("target_function", "/overlay")
-o.default=1
+o.default=0
 
 o=t:option(Flag,'auto_format', translate('Format before use'))
-o.default=1
+o:depends("target_function", "/opt")
+o:depends("target_function", "/dev")
+o.default=0
 
-o = t:option(DummyValue, '', '')
+o=t:option(DummyValue, '', '')
 o.rawhtml = true
 o.template ='partexp'
 
+
+e=t:option(TextValue,"log")
+e.rows=15
+e.wrap="on"
+e.readonly=true
+e.cfgvalue=function(t,t)
+return fs.readfile("/etc/partexp/partexp.log")or""
+end
+e.write=function(e,e,e)
+end
+
 -- e =t:option(DummyValue, '', '')
 -- e.rawhtml = true
--- e.template = 'partexp/log'
+-- e.template = 'partexplog'
 
 return m

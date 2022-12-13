@@ -7,9 +7,11 @@ local fs = require "nixio.fs"
 
 <%+cbi/valueheader%>
 
-<label class="cbi-value-title"><%= translate("Update") %></label>
+<script src="/luci-static/vssr/jquery.min.js"></script>
+<label class="cbi-value-title"><%= translate("Select the function to be performed") %></label>
 <div class="cbi-value-field">
-	<input onclick="return confirm('<%:The device will restart,Are you sure to execute?%>')" class="cbi-button cbi-button-reload" id="update_partexprun" type="button" value="<%= translate("Perform operation") %>">
+	<input  class="cbi-button cbi-button-reload" id="go_partexprun" type="button" value="<%= translate("Perform operation") %>">
+
 </div>
   <fieldset class="cbi-section" style="display:none">
     <legend id="partexprun-legend">
@@ -17,31 +19,41 @@ local fs = require "nixio.fs"
     </legend>
     <span id="partexprun-output"></span>
   </fieldset>
+
 <script type="text/javascript">
-    
+    const PARTEXP_RUN_URL = '<%=luci.dispatcher.build_url("admin", "system", "partexp","partexprun")%>';
+    const PARTEXP_URL = '<%=luci.dispatcher.build_url("admin", "system", "partexp","global")%>';
 
-    $(document).ready(function () {
-    function update_partexprun() {
-		setTimeout(() => { window.location = PARTEXP_REBOOT }, 100);
+    var legend = document.getElementById('partexprun-legend');
+    var output = document.getElementById('partexprun-output');
 
+
+$(document).ready(function(){
+	//	alert("hello");
+    function go_run() { 
+	legend.style.display = 'none';
+	output.innerHTML ='</p><%:After operation, restart the machine, please wait...%></p>';
+	setTimeout(() => { window.location = PARTEXP_URL }, 6000);
     }
 	
-    $("#update_partexprun").click(function () {
-    
-        const PARTEXP_RUN_URL = '<%=luci.dispatcher.build_url("admin", "system", "partexp","partexprun")%>';
-        const PARTEXP_URL = '<%=luci.dispatcher.build_url("admin", "system", "partexp","global")%>';
+    function go_err() { 
+	legend.style.display = 'none';
+	output.innerHTML ='</p><%:Please delete the partition or share and try again%></p>';
+	setTimeout(() => { window.location = PARTEXP_URL }, 6000);
+    }
+    $("#go_partexprun").click(function () {
+	if (confirm('<%:Restart the device to take effect. Confirm whether to continue?%>'))
+	{
+
         prefix_array = $("#cbi-partexp .cbi-section-node").attr("id").split("-");
         prefix_array[0] = "cbid";
         prefix = prefix_array.join(".");
-		var legend = document.getElementById('partexprun-legend');
-	var output = document.getElementById('partexprun-output');
- output.innerHTML =
+        output.innerHTML =
 			'<img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align:middle" /> ' +
 			'<%:Operation in progress, please wait...%>'
 			;
 			legend.parentNode.style.display = 'block';
 			legend.style.display = 'inline';
-
         var target_function = $("[name='" + prefix + ".target_function']").val();
         if ($("[name='" + prefix + ".keep_config']").is(":checked")) {
             var keep_config = "1";
@@ -63,28 +75,30 @@ local fs = require "nixio.fs"
             auto_format: auto_format,
             target_function: target_function
         }
+		
         $.ajax({
             type: "post",
             url: PARTEXP_RUN_URL,
             dataType: "json",
             data: data,
-            success: function (d) {
-			if (d.error == 2) {
-			output.innerHTML =
-				'<img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align:middle" /> ' +
-				'<%:After operation, restart the machine, please wait...%>'
-			;
-                   
-                }  else {
-				output.innerHTML ='<font color="#ff0000"><%:Execution error. Please delete the partition or share and try again.%></font>'
-                
+          success: function (d) {
+                if (d == 2) {
+                  	legend.style.display = 'none';
+                  	output.innerHTML ='</p><%:After operation, restart the machine, please wait...%></p>';
+
+                } else {
+						legend.style.display = 'none';
+						output.innerHTML ='</p>  <%:Operation execution complete%></p>';
                 }
 			setTimeout(() => { window.location = PARTEXP_URL }, 5000);
             }
+
         });
         return false;
+	}
     });
-    });
+});
+			
 
    
 </script>
