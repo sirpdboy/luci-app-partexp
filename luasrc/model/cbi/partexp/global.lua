@@ -14,6 +14,7 @@ luci.sys.exec("echo '-' >/tmp/partexp.log&&echo 1 > /tmp/lucilogpos" )
       or dev:match("^mmcblk%d+$")
       or dev:match("^sata[a-z]$")
       or dev:match("^nvme%d+n%d+$")
+      or dev:match("^vd[a-z]$")
       then
       table.insert(target_devnames, dev)
     end

@@ -331,6 +331,10 @@ autopart() {
     		fi
     		log  "检测到操作目标设备:/dev/$target_disk$isb!"
 		case "$target_disk" in
+		vd*)
+		        [ "$isB" = "/dev/${target_disk}1" -a "$target_function" = "/overlay" ] && fdiskB $target_disk 3 || fdiskB $target_disk $isb
+			;;
+
 		sd*)
 		        [ "$isB" = "/dev/${target_disk}1" -a "$target_function" = "/overlay" ] && fdiskB $target_disk 3 || fdiskB $target_disk $isb
 			;;
