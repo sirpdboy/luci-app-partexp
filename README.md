@@ -30,6 +30,17 @@ luci-app-partexp 一键自动格式化分区、扩容、自动挂载插件
 
 <!-- /TOC -->
 
+## 版本
+
+- 最新更新版本号： V1.3.1
+- 更新日期：2025年3月26日
+- 更新内容：
+- 重新整理分区扩容代码，解决一些不合理的地方。
+- 加入对目标分区的格式，可以指定格式化为ext4,ntfs和Btrfs以及不格式化。
+- 当做为根目录 /或者 /overlay时，密然会格式化为ext4格式。
+- 目前在X86的机器上测试完全正常，其它路由设备上未测试。有问题请提交硬盘分区情况和错误提示。
+
+ 
 ## 特性
  luci-app-partexp 自动获格式化分区扩容，自动挂载插件
 
@@ -67,7 +78,7 @@ luci-app-partexp 一键自动格式化分区、扩容、自动挂载插件
 
 ## 界面
 
-![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/partexp.jpg)
+![screenshots](https://raw.githubusercontent.com/sirpdboy/openwrt/master/doc/partexp.png)
 
 
 
